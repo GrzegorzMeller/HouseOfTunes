@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="row artist-title">
+
+    <div class="col-sm-6">
+
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-5">
+      <center>
+      <section class="sec">
+        <img style=" border-radius: 50%;" width="90%" height="90%" src="{{image_url}}" alt="{{image_url}}" class="img-fluid img-square">
+      </section>
+
+      <div style="background-color:purple" ><h1>{{artist.name}}</h1><h3> Total Followers {{artist['followers']['total']}}</h3></div>
+        </center>
+        <h3 style="margin-bottom: 5px;">TOP Tracks</h3>
+      {% for track in tracks %}
+      <h4>{{loop.index0 +1}}. {{track['name']}}</h4>
+      {% endfor %}
+
+
+    </div>
+
+    <div class="col-sm-7">
+      <h3 style="margin-bottom: 5px;"> Genres</h3>
+      <ul class="nav nav-pills">
+      {% for genres in artist['genres'] %}
+          <li style="background-color:purple; font-size:20px;" class="active">
+            {{genres}}
+          </li>
+      {% endfor %}
+        </ul>
+
+       <h3 style="margin-bottom: 5px;">Albums</h3>
+      {% for album in albums %}
+
+      <a href="{{url_for('album', id=album['id'])}}">
+      <div style="float:left; padding:10px;">
+         <img src="{{album['images'][0]['url']}}" width="200px" height="200px" class="img-playlist">
+      </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal related artists --->
+
+<div class="modal fade" id="related-modal" tabindex="-1" role="dialog" aria-labelledby="related-modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="related-modalLabel">{{ artist.name }} related artists</h4>
+      </div>
+      <div class="modal-body">
+        <!--<div class="row">
+            {% for art in related_artists %}
+                {% if art.images %}
+                  <div class="col-xs-6">
+                    <a href="{{url_for('artist',id=art.id) }}">
+                      <img src="{{art.images[0].url}}" alt="" class="img-thumbnail img-related">
+                      <span>{{ art.name }}</span>
+                    </a>
+
+                  </div>
+                {% endif %}
+            {% endfor %}-->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

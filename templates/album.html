@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="row artist-title">
+
+    <div class="col-sm-6">
+
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-5">
+        <center>
+      <section class="sec">
+        <img width="90%" height="90%" src="{{album_info['images'][0]['url']}}"  class="img-fluid img-square">
+      </section>
+
+      <div style="background-color:purple" ><h1>{{album_info['name']}}</h1><h3>{{album_info['release_date']}} </h3></div>
+        </center>
+    </div>
+
+    <div class="col-sm-7">
+        <h3 style="margin-bottom: 5px; background-color:purple">Album Tracks</h3>
+     {% for track in album_tracks %}
+        <h4>{{track['name']}}</h4>
+     {% endfor %}
+  </div>
+
+</div>
+  </div>
+{% endblock %}

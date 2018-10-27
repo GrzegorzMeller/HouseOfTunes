@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="container">
+    <div class="mt-1">
+      <h1 style="background-color:purple">House Of Tunes</h1>
+    </div>
+    <div class="row">
+    <div class="col-sm-4">
+  <div class="container">
+    <div class="mt-1">
+      <h1>Profile</h1>
+    </div>
+    <p class="lead">You need to log in to see ranking of your most listened artists and tracks.</p>
+
+    <a type="button" class="btn btn-default" href="/auth">Login</a>
+  </div>
+  </div>
+      <div class="col-sm-8">
+        <p style="font-size:20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus est ante, a mollis ligula mattis sed. Praesent posuere mollis enim quis aliquet. Curabitur viverra ultricies consequat. Etiam sollicitudin diam a risus dignissim lacinia sed eget magna. Nam non tellus ac eros rutrum facilisis in eget libero. Integer sagittis mollis varius. Aenean eget ullamcorper lectus, ac lacinia risus. Nunc interdum imperdiet ante a euismod. Maecenas pulvinar mi eu enim mollis, sit amet egestas nulla accumsan. Sed iaculis vulputate libero, rhoncus pretium ligula.</p>
+        <h2 style="background-color:purple">Users best song choice of a week</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/YTCUZdaWFXU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+
+{% endblock %}
