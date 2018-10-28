@@ -1,8 +1,14 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
-  <div class="container">
+<div class="jumbotron" style="background-image: url('../static/imgs/background.jpg'); background-size: cover; margin-top:-20px; height:100%;">
+      <div class="container">
+        <h1>Welcome to the House Of Tunes!</h1>
+        <p style="font-size:25px;">Your favourite music in one place. Log in with your Spotify account to see your most played artists and tracks!</p>
+        <a style="font-size:30px;" type="button" class="btn btn-success" href="/auth"><i class="fa fa-spotify" style="font-size:36px;color:white"></i><b> Log in with Spotify account</b></a>
+      </div>
+    </div>
+ <!-- <div class="container">
     <div class="mt-1">
       <h1 style="background-color:purple">House Of Tunes</h1>
     </div>
@@ -14,6 +20,12 @@
     </div>
     <p class="lead">You need to log in to see ranking of your most listened artists and tracks.</p>
 
+  <a href="https://twitter.com/el_alturas" class="btn btn-social-icon btn-spotify" target="_blank">
+    <span class="fa-stack fa-lg">
+  <i class="fa fa-square-o fa-stack-2x"></i>
+  <i class="fa fa-youtube-square fa-stack-1x"></i>
+</span>
+  </a>
     <a type="button" class="btn btn-default" href="/auth">Login</a>
   </div>
   </div>
@@ -22,6 +34,6 @@
         <h2 style="background-color:purple">Users best song choice of a week</h2>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/YTCUZdaWFXU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
-    </div>
+    </div>-->
 
 {% endblock %}
