@@ -18,18 +18,33 @@
     <div class="col-sm-5">
         <center>
       <section class="sec">
-        <img width="90%" height="90%" src="{{album_info['images'][0]['url']}}"  class="img-fluid img-square">
+        <img style="border-radius:1%;" width="90%" height="90%" src="{{album_info['images'][0]['url']}}"  class="img-fluid img-square">
       </section>
-
-      <div style="background-color:purple" ><h1>{{album_info['name']}}</h1><h3>{{album_info['release_date']}} </h3></div>
         </center>
     </div>
 
     <div class="col-sm-7">
-        <h3 style="margin-bottom: 5px; background-color:purple">Album Tracks</h3>
+        <h1 style="background-color:#004b53; padding:10px; display:inline; border-radius:3%;">{{album_info['name']}}</h1>
+        <a style="color:white;" href="{{url_for('artist', id=album_info['artists'][0]['id'])}}">
+            <h2>{{album_info['artists'][0]['name']}}</h2>
+        </a>
+        <i>{{album_info['release_date']}}</i>
+        <table class="table">
+  <thead>
+  <tr>
+      <th></th>
+  </tr>
+  </thead>
+  <tbody>
+
      {% for track in album_tracks %}
-        <h4>{{track['name']}}</h4>
+     <tr>
+        <td style="padding:20px;">{{loop.index0 +1}}. {{track['name']}}</td>
+     </tr>
      {% endfor %}
+
+  </tbody>
+        </table>
   </div>
 
 </div>

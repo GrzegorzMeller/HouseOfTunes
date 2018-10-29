@@ -130,8 +130,8 @@ def get_several_artists(list_of_ids):
     return resp.json()
 
 # https://developer.spotify.com/web-api/get-artists-albums/
-def get_artist_albums(auth_header, artist_id, country='US'):
-    url = "{}/{id}/albums".format(GET_ARTIST_ENDPOINT, id=artist_id)
+def get_artist_albums(auth_header, artist_id, country='PL'):
+    url = "{}/{id}/albums?include_groups=album%2Csingle".format(GET_ARTIST_ENDPOINT, id=artist_id)
     myparams = {'country': country}
     resp = requests.get(url, params=myparams, headers=auth_header)
     return resp.json()
