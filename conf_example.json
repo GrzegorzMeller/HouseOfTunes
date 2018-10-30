@@ -1,4 +1,5 @@
 {
     "id" : "YOUR CLIENT ID",
-    "secret": "YOUR SECRET ID"
+    "secret": "YOUR SECRET ID",
+    "songkick_id":"YOUR SONGKICK CLIENT ID"
 }

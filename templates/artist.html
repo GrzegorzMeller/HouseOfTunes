@@ -21,7 +21,10 @@
         <img style=" border-radius: 50%;" width="90%" height="90%" src="{{image_url}}" alt="{{image_url}}" class="img-fluid img-square">
       </section>
 
-      <div style="background-color:purple" ><h1>{{artist.name}}</h1><h3> Total Followers {{artist['followers']['total']}}</h3></div>
+      <div style="background-color:purple" ><h1>{{artist.name}}</h1><h3> Total Followers {{artist['followers']['total']}} </h3></div>
+        {% if on_tour != 'None' and on_tour != 'null'%}
+        <p>On tour till {{on_tour}}</p>
+        {% endif %}
         </center>
         <h3 style="margin-bottom: 5px;">TOP Tracks</h3>
       {% for track in tracks %}

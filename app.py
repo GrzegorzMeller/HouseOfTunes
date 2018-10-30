@@ -8,6 +8,7 @@
 
 from flask import Flask, request, redirect, g, render_template, session
 from spotify_requests import spotify
+from songkick_requests import songkick
 
 app = Flask(__name__)
 app.secret_key = 'some key for session'
@@ -83,15 +84,20 @@ def artist(id):
     tracks = tracksdata['tracks']
 
     albums = spotify.get_artist_albums(auth_header, id)
-    #related = spotify.get_related_artists(id)
-    #related = related['artists']
+
+    on_tour = songkick.get_artist_info(artist['name'])
+    #if songkick_id != "null":
+    #    on_tour = songkick.get_artist_concerts(songkick_id)
+    #else:
+    #    on_tour = "null"
 
     return render_template('artist.html',
                            artist=artist,
                            image_url=image_url,
                            tracks=tracks,
-                           albums=albums["items"])
-                           #related_artists=related,
+                           albums=albums["items"],
+                           on_tour=str(on_tour))
+
 
 
 
