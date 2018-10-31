@@ -9,6 +9,7 @@
 from flask import Flask, request, redirect, g, render_template, session
 from spotify_requests import spotify
 from songkick_requests import songkick
+from map_creator import folium
 
 app = Flask(__name__)
 app.secret_key = 'some key for session'
@@ -86,13 +87,14 @@ def artist(id):
     albums = spotify.get_artist_albums(auth_header, id)
 
     on_tour = songkick.get_artist_info(artist['name'])
-
+    image_id = image_url.replace("https://i.scdn.co/image/", "")
     return render_template('artist.html',
                            artist=artist,
                            image_url=image_url,
                            tracks=tracks,
                            albums=albums["items"],
-                           on_tour=on_tour)
+                           on_tour=on_tour,
+                           image_id=image_id)
 
 
 
@@ -131,6 +133,22 @@ def album(id):
             return render_template("album.html",
                                    album_tracks=album_tracks["items"],
                                    album_info=album_info)
+@app.route('/concerts/<songkick_id>/<name>/<image_id>')
+def concerts(songkick_id,name,image_id):
+    if 'auth_header' in session:
+        auth_header = session['auth_header']
+        artist_concerts = songkick.get_artist_concerts(songkick_id)
+        folium.create_map(artist_concerts['resultsPage']['results']['event'])
+        image_url='https://i.scdn.co/image/'+image_id
+        if valid_token(artist_concerts):
+            return render_template("concerts.html",
+                                   artist_concerts=artist_concerts['resultsPage']['results']['event'],
+                                   image_url=image_url,
+                                   name=name)
+
+@app.route('/map.html')
+def show_map():
+    return render_template("map.html")
 
 @app.route('/contact')
 def contact():

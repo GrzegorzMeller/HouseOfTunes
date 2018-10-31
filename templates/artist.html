@@ -23,7 +23,9 @@
 
       <div style="background-color:purple" ><h1>{{artist.name}}</h1><h3> Total Followers {{artist['followers']['total']}} </h3></div>
         {% if on_tour[1] != None and on_tour[1] != "null"%}
-        <p>On tour till {{on_tour[1]}}</p>
+        <a href="{{url_for('concerts', songkick_id=on_tour[0],image_id=image_id, name=artist.name)}}">
+        On tour!
+        </a>
         {% endif %}
         </center>
         <h3 style="margin-bottom: 5px;">TOP Tracks</h3>
