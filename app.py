@@ -86,17 +86,13 @@ def artist(id):
     albums = spotify.get_artist_albums(auth_header, id)
 
     on_tour = songkick.get_artist_info(artist['name'])
-    #if songkick_id != "null":
-    #    on_tour = songkick.get_artist_concerts(songkick_id)
-    #else:
-    #    on_tour = "null"
 
     return render_template('artist.html',
                            artist=artist,
                            image_url=image_url,
                            tracks=tracks,
                            albums=albums["items"],
-                           on_tour=str(on_tour))
+                           on_tour=on_tour)
 
 
 
@@ -114,6 +110,9 @@ def profile(time_range):
         top_artists = spotify.get_users_top(auth_header, 'artists', time_range, 50)
         # get users top tracks
         top_tracks = spotify.get_users_top(auth_header, 'tracks', time_range, 50)
+        #on_tour = []
+        #for artist_name in top_artists["items"]:
+        #    on_tour.append(songkick.get_artist_info(artist_name['name']))
         if valid_token(top_artists):
             return render_template("profile.html",
                                user=profile_data,

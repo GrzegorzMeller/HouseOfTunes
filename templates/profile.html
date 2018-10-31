@@ -24,10 +24,10 @@
     </div>
 
 <div class="container" style="margin-top:-60px;">
-          <a style="font-size:30px;" type="button" class="btn"href="{{ url_for('profile', time_range='long_term')}}"><b>From the beginning</b></a>
-          <a style="font-size:30px;" type="button" class="btn"href="{{ url_for('profile', time_range='medium_term')}}"><b>Last 6 months</b></a>
-          <a style="font-size:30px;" type="button" class="btn"href="{{ url_for('profile', time_range='short_term')}}"><b>Last 4 weeks</b></a>
-    <hr>
+          <a style="color:rgb(152, 193, 226);font-size:30px;" type="button" class="btn"href="{{ url_for('profile', time_range='long_term')}}"><b>From the beginning</b></a>
+          <a style="color:rgb(152, 193, 226);font-size:30px;" type="button" class="btn"href="{{ url_for('profile', time_range='medium_term')}}"><b>Last 6 months</b></a>
+          <a style="color:rgb(152, 193, 226);font-size:30px;" type="button" class="btn"href="{{ url_for('profile', time_range='short_term')}}"><b>Last 4 weeks</b></a>
+    <hr style="border-top-color: #363636;">
   <div class='containter'>
      <div class="row">
         <div class="col-sm-8">
@@ -55,7 +55,7 @@
              <h1>Most often played tracks:</h1>
              {% for track in top_tracks %}
              <a href="{{url_for('album', id=track['album']['id'])}}">
-                <p style="font-size:19px;">{{loop.index0 +1}}. {{ track['name'] }}</p>
+                <p style="font-size:19px;color:rgb(152, 193, 226);">{{loop.index0 +1}}. {{ track['name'] }}</p>
              </a>
              {% endfor %}
          </div>

@@ -18,16 +18,28 @@ CLIENT_ID = CLIENT['songkick_id']
 
 # search_for_artist
 def get_artist_info(name):
-    artist_name = name.replace("&", "")
-    artist_name = artist_name.replace("#", "")
-    artist_name = artist_name.replace("?", "")
-    artist_name = artist_name.replace("/", "")
-    url = "https://api.songkick.com/api/3.0/search/artists.json?apikey={apikey}&query={query}".format(apikey=CLIENT_ID, query=artist_name)
-    resp = requests.get(url)
-    result = resp.json()
-    if result['resultsPage']['results']['artist'][0]['displayName'] == name:
-        return result['resultsPage']['results']['artist'][0]['onTourUntil']
-    return "null"
+    try:
+        artist_name = name.replace("&", "")
+        artist_name = artist_name.replace("#", "")
+        artist_name = artist_name.replace("?", "")
+        artist_name = artist_name.replace("/", "")
+        url = "https://api.songkick.com/api/3.0/search/artists.json?apikey={apikey}&query={query}".format(
+            apikey=CLIENT_ID, query=artist_name)
+        resp = requests.get(url)
+        result = resp.json()
+        info=[]
+        if result['resultsPage']['results']['artist'][0]['displayName'] == name:
+            info.append(result['resultsPage']['results']['artist'][0]['id'])
+            info.append(result['resultsPage']['results']['artist'][0]['onTourUntil'])
+            return info
+        info.append("null")
+        info.append("null")
+        return info
+    except:
+        info = []
+        info.append("null")
+        info.append("null")
+        return info
 
 # search for concerts of artist
 def get_artist_concerts(artist_id):

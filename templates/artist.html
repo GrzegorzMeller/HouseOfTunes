@@ -22,8 +22,8 @@
       </section>
 
       <div style="background-color:purple" ><h1>{{artist.name}}</h1><h3> Total Followers {{artist['followers']['total']}} </h3></div>
-        {% if on_tour != 'None' and on_tour != 'null'%}
-        <p>On tour till {{on_tour}}</p>
+        {% if on_tour[1] != None and on_tour[1] != "null"%}
+        <p>On tour till {{on_tour[1]}}</p>
         {% endif %}
         </center>
         <h3 style="margin-bottom: 5px;">TOP Tracks</h3>

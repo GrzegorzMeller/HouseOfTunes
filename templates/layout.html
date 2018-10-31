@@ -3,7 +3,7 @@
 
   <head>
 
-    <title>MyTracks</title>
+    <title>House Of Tunes</title>
 
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
@@ -20,26 +20,36 @@
 
   <body>
 
-    <div id="header">
+    <div id="header" style="color:#d5d2cd;">
 
       <!-- Static navbar -->
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-default" style="background-color: rgb(33, 36, 43);  border-top-color: #383838; border-right-color: #383838; border-bottom-color: #383838; border-left-color: #383838;--darkreader-inline-bgcolor: #21242b;
+
+--darkreader-inline-color: #d5d2cd;
+
+--darkreader-inline-border-top: #5b5b5b;
+
+--darkreader-inline-border-right: #5b5b5b;
+
+--darkreader-inline-border-bottom: #5b5b5b;
+
+--darkreader-inline-border-left: #5b5b5b;">
 
         <div class="container-fluid">
 
           <a href='{{ url_for("index") }}'>
             <div class="navbar-header">
-              <p  class="navbar-brand" id="title" href="#"><b>House Of Tunes</b></p>
+              <p style="color:rgb(213, 210, 205);" class="navbar-brand" id="title" href="#"><b>House Of Tunes</b></p>
             </div>
           </a>
           <div class="navbar-collapse collapse">
 
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <a type="button" class="btn btn-outline-success" href="{{ url_for('profile', time_range='long_term') }}">Log-in with Spotify</a>
+                <a style="color:rgb(213, 210, 205);" type="button" class="btn btn-outline-success" href="{{ url_for('profile', time_range='long_term') }}">Log-in with Spotify</a>
               </li>
               <li>
-                    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                    <a style="color:rgb(213, 210, 205);" class="nav-link" href="{{ url_for('contact') }}">Contact</a>
               </li>
             </ul>
 
@@ -53,19 +63,19 @@
       {% block content %}{% endblock %}
     </div>
 
-    <footer class="footer" style="background-color:#e7e7e7;">
+    <footer class="footer" style="background-color: rgb(29, 31, 36); --darkreader-inline-bgcolor: #1d1f24;">
 
-        <span class="text-muted">
+        <span style="color:rgb(213, 210, 205);" class="text-muted">
           &copy; Copyright 2018 by <a href="../contact"> Grzegorz Meller</a>.
           <center>
              <a href="https://twitter.com/GrzesiekMeller" target="_blank">
-              <i class="fa fa-twitter-square" style="font-size:48px;color:black"></i>
+              <i class="fa fa-twitter-square" style="font-size:48px;color: rgb(232, 231, 227);"></i>
              </a> &nbsp;
              <a href="https://github.com/GrzegorzMeller" target="_blank">
-               <i class="fa fa-github-square" style="font-size:48px;color:black"></i>
+               <i class="fa fa-github-square" style="font-size:48px;color: rgb(232, 231, 227);"></i>
              </a> &nbsp;
             <a href="https://www.linkedin.com/in/grzegorzmeller/" target="_blank">
-              <i class="fa fa-linkedin-square" style="font-size:48px;color:black"></i>
+              <i class="fa fa-linkedin-square" style="font-size:48px;color: rgb(232, 231, 227);"></i>
             </a>
           </center>
         </span>
