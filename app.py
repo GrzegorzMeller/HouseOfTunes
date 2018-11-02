@@ -27,7 +27,8 @@ def callback():
     auth_token = request.args['code']
     auth_header = spotify.authorize(auth_token)
     session['auth_header'] = auth_header
-    session['map'] = "null"
+    session['mapFirstHalf'] = "null"
+    session['mapSecondHalf'] = "null"
     return profile('long_term')
 
 def valid_token(resp):
@@ -87,6 +88,12 @@ def artist(id):
     albums = spotify.get_artist_albums(auth_header, id)
 
     on_tour = songkick.get_artist_info(artist['name'])
+    if on_tour[1] != None and on_tour[1] != "null":
+        artist_concerts = songkick.get_artist_concerts(on_tour[0])
+        concert_map = str(folium.create_map(artist_concerts['resultsPage']['results']['event']))
+        mid = (len(concert_map) + 1) / 2
+        session['mapFirstHalf'] = concert_map[:int(mid)]
+        session['mapSecondHalf'] = concert_map[int(mid):]
     image_id = image_url.replace("https://i.scdn.co/image/", "")
     return render_template('artist.html',
                            artist=artist,
@@ -147,10 +154,12 @@ def concerts(songkick_id, name, image_id):
                                    image_url=image_url,
                                    name=name)
 
-@app.route('/map')
-def show_map():
+@app.route('/map/<songkick_id>')
+def show_map(songkick_id):
+    event = songkick.get_artist_concerts(songkick_id)
+    concert_map = str(folium.create_map(event['resultsPage']['results']['event']))
     return render_template("map.html",
-                           map=session['map'])
+                           map=concert_map)
 
 @app.route('/contact')
 def contact():
