@@ -27,8 +27,6 @@ def callback():
     auth_token = request.args['code']
     auth_header = spotify.authorize(auth_token)
     session['auth_header'] = auth_header
-    session['mapFirstHalf'] = "null"
-    session['mapSecondHalf'] = "null"
     return profile('long_term')
 
 def valid_token(resp):
@@ -84,16 +82,8 @@ def artist(id):
 
     tracksdata = spotify.get_artist_top_tracks(auth_header, id)
     tracks = tracksdata['tracks']
-
     albums = spotify.get_artist_albums(auth_header, id)
-
     on_tour = songkick.get_artist_info(artist['name'])
-    if on_tour[1] != None and on_tour[1] != "null":
-        artist_concerts = songkick.get_artist_concerts(on_tour[0])
-        concert_map = str(folium.create_map(artist_concerts['resultsPage']['results']['event']))
-        mid = (len(concert_map) + 1) / 2
-        session['mapFirstHalf'] = concert_map[:int(mid)]
-        session['mapSecondHalf'] = concert_map[int(mid):]
     image_id = image_url.replace("https://i.scdn.co/image/", "")
     return render_template('artist.html',
                            artist=artist,
@@ -119,7 +109,6 @@ def profile(time_range):
         top_artists = spotify.get_users_top(auth_header, 'artists', time_range, 50)
         # get users top tracks
         top_tracks = spotify.get_users_top(auth_header, 'tracks', time_range, 50)
-        #on_tour = []
         #for artist_name in top_artists["items"]:
         #    on_tour.append(songkick.get_artist_info(artist_name['name']))
         if valid_token(top_artists):
@@ -140,19 +129,6 @@ def album(id):
             return render_template("album.html",
                                    album_tracks=album_tracks["items"],
                                    album_info=album_info)
-@app.route('/concerts/<songkick_id>/<name>/<image_id>')
-def concerts(songkick_id, name, image_id):
-    if 'auth_header' in session:
-        auth_header = session['auth_header']
-        artist_concerts = songkick.get_artist_concerts(songkick_id)
-        concert_map = folium.create_map(artist_concerts['resultsPage']['results']['event'])
-        session['map'] = concert_map
-        image_url = 'https://i.scdn.co/image/'+image_id
-        if valid_token(artist_concerts):
-            return render_template("concerts.html",
-                                   artist_concerts=artist_concerts['resultsPage']['results']['event'],
-                                   image_url=image_url,
-                                   name=name)
 
 @app.route('/map/<songkick_id>')
 def show_map(songkick_id):

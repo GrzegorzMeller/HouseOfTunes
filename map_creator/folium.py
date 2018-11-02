@@ -31,6 +31,5 @@ def create_map(concerts_data):
             folium.Marker([data.iloc[i]['lat'], data.iloc[i]['lon']]).add_to(m)
 
     # Save it as html
-    m.save('map123.html')
     html_string = m.get_root().render()
     return html_string
