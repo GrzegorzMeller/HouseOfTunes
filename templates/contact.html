@@ -2,37 +2,54 @@
 
 {% block content %}
 
-  <div class="container">
-     <div class="row">
-    <div class="col-sm-5" style="border: 3px solid #ccc;">
-      <center>
-        <br />
-      <img  style=" border-radius: 50%;" width="90%" height="90%" src="../static/imgs/profile.jpg" class="img-fluid img-square">
-      <div style="" ><h1>Grzegorz Meller</h1><h3>Experienced Web Developer and Data Engineering Student</h3>
-        <a href="https://twitter.com/GrzesiekMeller" target="_blank">
-              <i class="fa fa-twitter-square" style="font-size:48px;color:white"></i>
-             </a> &nbsp;
-             <a href="https://github.com/GrzegorzMeller" target="_blank">
-               <i class="fa fa-github-square" style="font-size:48px;color:white"></i>
-             </a> &nbsp;
-            <a href="https://www.linkedin.com/in/grzegorzmeller/" target="_blank">
-              <i class="fa fa-linkedin-square" style="font-size:48px;color:white"></i>
-            </a>
+<div class="jumbotron" style="background-image: url('../static/imgs/background.jpg'); background-size: cover; margin-top:-20px; height:220px; background-position: bottom;">
+      <div class="container" style="margin-top:-90px;">
+        <div class="row">
+        <div style="float:left;display:block;">
+        <img  style=" border-radius: 60%;" width="auto" height="130px" src="../static/imgs/profile.jpg" class="img-fluid img-square"> &nbsp; &nbsp; &nbsp;
         </div>
-        <br />
-      </center>
+        <div style="float:left;display:block;">
+        <h1>Grzegorz Meller</h1>
+        </div>
+      </div>
     </div>
-        <div class="col-sm-7">
-        <h1 style="margin-bottom: 5px;">About</h1>
-          <hr>
-          <p style="font-size:26px; text-align: justify;">Hi, my name is Grzegorz Meller. I'm Data Engineering student at Gdansk University of Technology and former ASP.Net Full-Stack Developer.
-          I created this application as a side-project to learn Python and OAuth2. Also I was very excited about Spotify and my own music statistics.
-          I'm very open for new opportunities, currently looking for summer internship in data science/information technology.
-          If you want to contact me (not only for business reasons) feel free to email me!</p>
-          <div style=" background-color:purple; width:50%;">
-           <h3 style="margin-bottom: 5px; padding:10px;">MAIL: grzesek98@gmail.com</h3>
-          </div
-        </div>
-  </div>
+</div>
 
+  <div class="container" style="margin-top:-100px;">
+     <div class="row">
+    <div class="col-sm-6">
+      <h1 style="margin-bottom: 5px;">About Me</h1>
+          <hr style="border-top-color: #363636;">
+          <p style="text-align: justify; font-size:20px;">Hi, my name is Grzegorz Meller. I'm Data Engineering student at Gdansk University of Technology and former ASP.Net Full-Stack Developer.
+          I created this application as a side-project to learn Python and OAuth2. I was also very excited about Spotify and my own music statistics.
+          I'm very open for new opportunities, currently looking for summer internship in data science/information technology.
+          </p><br /><br />
+
+        </div>
+        <div class="col-sm-6">
+            <h1 style="margin-bottom: 5px;">Contact</h1>
+            <hr style="border-top-color: #363636;">
+            <div class="row">
+                 <div class="col-sm-4">
+                <p style="font-size:20px;">E-mail</p>
+                 </div>
+                <div class="col-sm-8">
+                    <p style="font-size:20px;"><b style="text-align:end; color: rgb(154, 245, 255);">grzesek98@gmail.com</b></p>
+                </div>
+            </div><br />
+            <p style="font-size:20px;">Feel free to write me an e-mail even if it's not work-related.</p><br />
+            <h1 style="margin-bottom: 5px;">Find me on</h1>
+            <hr style="border-top-color: #363636;">
+            <div class="row">
+                 <div class="col-sm-4">
+                <p style="font-size:20px;">LinkedIn<br /><br />
+                    GitHub<br /><br />Twitter
+                </p>
+                 </div>
+                <div class="col-sm-8">
+                    <p style="font-size:20px;"><b style="text-align:end; color: rgb(154, 245, 255);"><a href="https://www.linkedin.com/in/grzegorzmeller/" style=" color: rgb(154, 245, 255);"> grzegorzmeller</a><br/><br/><a href="https://github.com/GrzegorzMeller" style=" color: rgb(154, 245, 255);"> GrzegorzMeller</a><br /><br/><a style=" color: rgb(154, 245, 255);" href="https://twitter.com/GrzesiekMeller"> @GrzesiekMeller</a></b></p>
+                </div>
+            </div><br />
+     </div>
+     </div>
 {% endblock %}
